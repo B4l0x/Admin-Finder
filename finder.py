@@ -16,13 +16,12 @@ print '''
 '''
 
 parser = arg.ArgumentParser(description="Admin finder criado por b4l0x..")
-parser.add_argument("--url", help="Url do site..", required=True, action="store")
-parser.add_argument("--wordlist", help="Use uma wordlist de pagina personalizadas, ou deixe em branco para padrao", 
-default="lista.txt", action="store")
+parser.add_argument("--url", help="Url do site..", required=True)
+parser.add_argument("--wordlist", help="Use uma wordlist de pagina personalizadas", default="lista.txt")
 x = parser.parse_args()
 
 try:
-	print("[!] Iniciando procura...")
+	print("[!] Iniciando finder...")
 	ler = open(x.wordlist, "r")
 	for pag in ler:
 		page = pag.replace("\n", "")
@@ -32,6 +31,6 @@ try:
 			print("[!] Painel encontrado: {}").format(x.url+page)
 			break
 		elif rq != 200:
-			print("[!] Nada em: {}").format(x.url+page)
+			print("[!] Testando: {}").format(x.url+page)
 except:
 	print("[X] ERRO!")
